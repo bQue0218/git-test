@@ -1,7 +1,10 @@
 package com.bque.demo.web;
 
+import com.bque.demo.service.HelloService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * comment,,,
@@ -11,11 +14,13 @@ import org.springframework.web.bind.annotation.GetMapping;
  * @since 2023.02.19.(일)
  */
 
-@Controller
+@RestController
+@RequiredArgsConstructor
 public class HelloController {
+    private final HelloService helloService;
 
     @GetMapping("/hello")
     public String printHello() {
-        return "Hello Git";
+        return helloService.sayHello() + "Git Sample Test.";
     }
 }
